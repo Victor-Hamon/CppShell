@@ -14,7 +14,6 @@ private:
     bool _on{};
     int _history_size = DEFAULT_HISTORY_SIZE;
     std::string _last_raw_input;
-    CommandParser _parser;
     std::vector<Command> _history;
     std::vector<std::string> _exec_paths;
 public:
@@ -22,6 +21,7 @@ public:
     virtual ~Shell();
     void StartShell();
     void GetExecPaths();
+    void ExecuteCommand(Command& command);
 };
 
 #endif //SISH_SHELL_HPP

@@ -10,7 +10,7 @@
 class CommandParser {
 private:
 public:
-    static Command ParseString(std::string input);
+    static std::vector<Command> ParseInput(const std::string& input);
 };
 
 #endif //SISH_COMMANDPARSER_HPP

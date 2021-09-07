@@ -5,6 +5,7 @@
 #include <iostream>
 #include <filesystem>
 #include "Shell.hpp"
+#include "Builtins/Builtin.hpp"
 
 Shell::Shell() {
     this->GetExecPaths();
@@ -27,6 +28,11 @@ void Shell::StartShell() {
 
         if (_last_raw_input == "exit")
             _on = false;
+        auto commands = CommandParser::ParseInput(_last_raw_input);
+        for (auto& command:commands) {
+            this->ExecuteCommand(command);
+            std::cout << command.getExec() << std::endl;
+        }
     }
 
 }
@@ -46,5 +52,14 @@ void Shell::GetExecPaths() {
         }
     } catch (std::exception &e) {
         std::cout << e.what() << std::endl;
+    }
+}
+
+void Shell::ExecuteCommand(Command& command) {
+    _history.push_back(command);
+    if (isBuiltin(command)) {
+        std::cout << "OUI LE BUILTIN" << std::endl;
+    } else {
+
     }
 }
