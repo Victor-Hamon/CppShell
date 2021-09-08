@@ -32,3 +32,16 @@ const std::vector<std::string> &Command::getArguments() const {
 void Command::setArguments(const std::vector<std::string> &arguments) {
     _arguments = arguments;
 }
+
+Command::Command(std::string  exec, std::vector<std::string>  arguments, std::vector<std::string>  input): _exec(std::move(exec)),
+                                                                                                                             _arguments(std::move(arguments)),
+                                                                                                                             _raw_input(std::move(input)){
+
+}
+ std::vector<std::string> &Command::getRawInput() {
+    return _raw_input;
+}
+
+void Command::setRawInput(const std::vector<std::string> &rawInput) {
+    _raw_input = rawInput;
+}

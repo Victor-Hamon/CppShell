@@ -4,6 +4,7 @@
 
 #include <iostream>
 #include <algorithm>
+#include <ranges>
 
 #include "Builtin.hpp"
 
